@@ -15,185 +15,109 @@
 
 The official code repository for the paper: **Artistic Fusion: Revolutionizing Mural Style Transfer with Combined GAN and Diffusion Model Techniques.**
 
-<p align="center">
-    <a id="SAITS" href="#SAITS">
-        <img src="./docs/_static/teaser.png" alt="SAITS Title" title="SAITS Title" width="600"/>
-    </a>
-</p>
-
 ## Introduction:
 
-**Artistic Fusion**, is a image style transfer model base on CycleGAN and Stable Diffusion. At its core, CycleGAN establishes a reliable base for style accuracy, which is then significantly enhanced through our diffusion model adaptations. Classifier-guided and classifier-free guiance methods play a crucial role, enriched further by the integration of text-driven large diffusion models such as Stable Diffusion. Additionally, a pivotal exploration into the efficacy of superresolution models elevates the final output to high-resolutions, achieving remarkable clarity and details. Our comprehensive methodology and rigorous experiments have led to promis-ing results, achieving competitive performance in FID and LPIPS evaluation metrics, and possess aesthetic and artistic purity.
+**Artistic Fusion**, is an image style transfer model base on CycleGAN and Stable Diffusion. At its core, CycleGAN establishes a reliable base for style accuracy, which is then significantly enhanced through our diffusion model adaptations. Classifier-guided and classifier-free guidance methods play a crucial role, enriched further by the integration of text-driven large diffusion models such as Stable Diffusion. Additionally, a pivotal exploration into the efficacy of superresolution models elevates the final output to high-resolution, achieving remarkable clarity and details. Our comprehensive methodology and rigorous experiments have led to promising results, achieving competitive performance in FID and LPIPS evaluation metrics, and possessing aesthetic and artistic purity.
 
-In essence, **Arsistic Fusion** is more than an addition to the compendium of image style transfer methods; it is an approach that aligns the human kind's aesthetic and artistic cravings with modern intricate style transfer technologies.
+In essence, **Artistic Fusion** is more than an addition to the compendium of image style transfer methods; it is an approach that aligns the humankind's aesthetic and artistic cravings with modern intricate style transfer technologies.
 
-🤗 Please cite [BLIP BeaconSaliency](https://github.com/Learner209/) in your publications if it helps with your work. Please star🌟 this repo to help others notice AugmentIQ if you think it is useful. It really means a lot to our open-source research. Thank you! BTW, you may also like [`BLIP`](https://github.com/salesforce/BLIP), [`pysaliency`](https://github.com/matthias-k/pysaliency), the two great open-source repositories upon which we built our architecture.
+🤗 Please cite [Artistic Fusion](https://github.com/Learner209/artistic-fusion) in your publications if it helps with your work. Please star🌟 this repo to help others notice Artistic Fusion if you think it is useful. Thank you! BTW, you may also like [`CycleGAN`](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix), [`stable-diffusion-webui`](https://github.com/AUTOMATIC1111/stable-diffusion-webui), the two great open-source repositories upon which we built our architecture.
 
-> 📣 Attention please: <br> > **BLIP BeaconSaliency** is developed under the framework of [pysaliency](https://github.com/matthias-k/pysaliency), a Python toolbox for predicting visual saliency maps and is pre-configured with several datasets and matlab-implemented models. An example of using pysaliency for predicting SJTU-VIS dataset is shown below. With [pysaliency](https://github.com/matthias-k/pysaliency), easy peasy! 😉
+> 📣 Attention please: <br> > **Artistic Fusion** is developed heavily under the framework of [stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui), an ultra-awesome project clustering copious diffusion-based generative models. Its instellation of image generaitive models provided us with a plentiful playground with munificient probablities. An example of using stale-diffusion-webui for generating image variation(a indispensable component of our final model) results are shown below. With [stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui), easy peasy! 😉
 
 <details open>
   <summary><b>👉 Click here to see the example 👀</b></summary>
-
-```bash
-cd pysaliency
-pip install -e .
-```
-
-```python
-# Data preprocessing. Tedious, but pysaliency can help. 🤓
-data_location = "../../datasets"
-mit_stimuli, mit_fixations = pysaliency.external_datasets.get_mit1003(location=data_location) # For datasets in pysaliency database, pysaliency will automatically download, extract it, and store it in hfd5 format.
-index = 10
-plt.imshow(mit_stimuli.stimuli[index])
-f = mit_fixations[mit_fixations.n == index]
-plt.scatter(f.x, f.y, color='r')
-_ = plt.axis('off')
-cutoff = 20
-
-aim: pysaliency.SaliencyMapModel = pysaliency.AIM(location='../../models', cache_location=os.path.join('model_caches', 'AIM'))
-
-from pysaliency.external_datasets.sjtuvis import TextDescriptor
-text_descriptor = TextDescriptor('../../datasets/test/original_sjtuvis_dataset/text.xlsx')
-data_location = "../../datasets/test"
-original_dataset_path = "../../datasets/test/original_sjtuvis_dataset"
-mit_stimuli, mit_fixations = pysaliency.external_datasets.get_sjtu_vis(original_dataset_path=original_dataset_path, location=data_location, text_descriptor = text_descriptor)
-short_stimuli = pysaliency.FileStimuli(filenames=mit_stimuli.filenames[:cutoff]) # hold first 10 visual stimuli as pilot test set.
-short_fixations = mit_fixations[mit_fixations.n < cutoff]
-
-# Model inference. This is pysaliency showtime. 💪
-smap = model.saliency_map(mit_stimuli[10])
-plt.imshow(smap)
-plt.show()
-
-
-# Several evaluation metrics calculation.
-auc_uniform = model.AUC(short_stimuli, short_fixations, nonfixations='uniform', verbose=True)  # Measures the accuracy of predicting fixations by evaluating the model's ability to distinguish between fixated and non-fixated regions.
-auc_shuffled = model.AUC(short_stimuli, short_fixations, nonfixations='shuffled', verbose=True)
-auc_identical_nonfixations = model.AUC(short_stimuli, short_fixations, nonfixations=short_fixations, verbose=True)
-kl_uniform = model.fixation_based_KL_divergence(short_stimuli, short_fixations, nonfixations='uniform') #  Quantifies the dissimilarity between fixation and nonfixation distributions, providing insights into the model's ability to capture saliency patterns.
-kl_shuffled = model.fixation_based_KL_divergence(short_stimuli, short_fixations, nonfixations='shuffled')
-kl_identical = model.fixation_based_KL_divergence(short_stimuli, short_fixations, nonfixations=short_fixations)
-nss = model.NSS(short_stimuli, short_fixations) # Measures the alignment between the model's saliency values and human eye fixations, indicating consistency with human gaze behavior.
-gold_standard = pysaliency.FixationMap(short_stimuli, short_fixations, kernel_size=30)
-image_based_kl = model.image_based_kl_divergence(short_stimuli, gold_standard) # Calculates the similarity between the model's saliency predictions and the ground truth fixation map using KL divergence.
-cc = model.CC(short_stimuli, gold_standard) # Measures the linear relationship between the model's saliency predictions and the ground truth fixation map.
-ssim = model.SIM(short_stimuli, gold_standard) # Measures the structural similarity between the model's saliency predictions and the ground truth fixation map.
-
-
-```
 
 ## ❖ Contributions and Performance
 
 ⦿ **`Contributions`**:
 
-1.  Our model innovatively explores text-guided saliency, an area previously under-researched. It focuses on how textual prompts affect visual saliency map prediction, advancing the field’s boundaries.
-2.  The architecture integrates BERT and GradCam. BERT excels in aligning text and image features, while GradCam effectively draws saliency maps using esti- mated gradient flows. Their combination enhances model performance on various metrics.
-3.  Our model achieves better and consistent results, comparable to state-of-the-art models across several metrics like sAUC, AUC, SSIM, CC, confirming its efficacy.
+1. Our approach leverages the Latent diffusion model (LDM) as a baseline, which we explore several innovative techniques such as variance learning and optimized noise scheduling. These modifications allow for a more nuanced and faithful representation of mural styles.
+2. We explore the use of DDIM sampling to improve the efficiency of the generative process. We also delve into the world of large text-conditional image diffusion models like Stable Diffusion, utilizing textual prompts to guide the style transfer process more effectively. This integration of conditional guidance is particularly groundbreaking, enabling our model to interpret and apply complex mural styles with unprecedented accuracy and diversity.
+3. We integrate super-resolution techniques, scaling the generated images to higher resolutions without losing the essence of the mural style. This step ensures that our outputs are not just stylistically accurate but also of high fidelity and detail, suitable for large-scale artistic displays.
+4. Our model not only achieves competitive results on evaluation metrics such as FID and LPIPS metrics but also exhibits more aesthetic and artistic details.
 
-⦿ **`Performance`**: **BLIP BeaconSaliency** outperforms various models on several saliency benchmarks, especially in datset SJTU-VIS.
+⦿ **`Performance`**: **Artistic Fusion** : Currnently, we reported our FID score at 116 and our LPIPS score at 0.63.
 
 ## ❖ Brief Graphical Illustration of Our Methodology
 
-Here we only show the main component of our method: the joint-optimization training approach combining three encoders while frozening their own weights.
-For the detailed description and explanation, please read our full paper if you are interested.
+Here we only two main variations of our method: the GAN+Diffusion pipeline and the Diffusion+GAN pipeline. For the detailed description and explanation, please read our full paper if you are interested.
 
-<b>Fig. 1: Training approach</b>
+GAN+Diffusion pipeline, with GAN-based solid style transfer capabilities, coupled with diffusion-enhanced variety and vitality(but deviates from the style transfer intent too easily):
 
-## ❖ Repository Structure
+<p align="center">
+    <a id="SAITS" href="#SAITS">
+        <img src="./assets/demo/artistic_fusion_004.png" alt="artistic fusion" title="artistic fusion" width="600"/>
+    </a>
+</p>
 
-The implementation of **BLIP BeaconSaliency** is in dir [`blipsaliency`](https://github.com/Learner209/text-guided-saliency).Please install it via `pip install -e .` or `python setup.py install`. Due to the time and resource limit, we haven't performed extensive enough parameter finetuning experiments, if you like this repo, plek and PR to help us improve it ! 💚 💛 🤎.
+Our final model: Diffusion + GAN framework, with Stable diffusion models' generative capabilities injected, followed by CycleGAN's style transfer pipeline.
+
+<p align="center">
+    <a id="SAITS" href="#SAITS">
+        <img src="./assets/demo/artistic_fusion_005.png" alt="artistic fusion" title="artistic fusion" width="600"/>
+    </a>
+</p>
 
 ## ❖ Development Environment
 
-We run on `Ubuntu 22.04 LTS` with a system configured with a NVIDIA RTX A40 GPU.
+We run on `Ubuntu 22.04 LTS` with a system configured with $8\times$ NVIDIA RTX A40 GPU.
 
--   Use conda to create a env for **BLIP BeaconSaliency** and activate it.
-
-```bash
-conda env create --file=enviornment.yaml
-conda activate blipsaliency
-```
-
--   Then install **blipsaliency** as a package
-
-```
-cd blipsaliency
-pip install -e .
-```
-
-Additionally, if you want to reproduce the results about the gradient-based models in the paper(extensive experiments on Vanilla Gradient, SmoothGrad, Integrated gradients, GradCam... based on InceptionV3, CNN or MLP architectures), please refer to the sanity-check directory !🤗
-
-To follow the original implementation of these gradient-based models, we have to create a new conda environment to test it!
+-   Use conda to create a env for **Artistic fusion** and activate it.
 
 ```bash
-conda env create --file=tf_env.yaml
-conda activate sanity
+conda create -n ldm python=3.10
+conda activate ldm
 ```
 
-Also, if you want to see how I process the SJTU-VIS dataset inot to hdf5 format and integrate them into the pysaliency framework, please refer to the pysaliency directory and more specifically, the file, (and we are planning to give a PR to the original pysaliency repo since SJTU-VIS is an awesome dataset integrated with the power of textual prompts) !😎
+-   Then running the `webui.sh`, the activated environment will automatically flow into installation process.
+
+```
+./webui.sh
+```
+
+Additionally, if you want to reproduce image-variation results in the paper(based on `sd-unclip-h.ckpt`), please refer to the [latent diffusion](https://github.com/CompVis/latent-diffusion) repo !🤗
+
+Also, if you want to reproduce other style transfer results in the paper, please refer to the cycleGAN directory and more specifically, the file, for other training detail queries, please contact our author [qisiyuan](qisiyuan7936@sjtu.edu.cn).
 
 ## ❖ Datasets
 
-We run on nine datasets, more specifically, MIT1003(MIT300), SJTU-VIS, CAT2000, FIGRIM, SALICON, Toronto, DUT-OMRON, OSIE, PASCAL-S, NUSEF-Public.
+We run on one image style transfer dataset.
 
-Here are some samples taken randomly from the dataset:
-
-<p align="center">
-    <a id="SAITS" href="#SAITS">
-        <img src="./docs/_static/cat2000.png" alt="SAITS Title" title="SAITS Title" width="600"/>
-    </a>
-</p>
+Here are some samples from our style image dataset:
 
 <p align="center">
     <a id="SAITS" href="#SAITS">
-        <img src="./docs/_static/FIGRIM.png" alt="SAITS Title" title="SAITS Title" width="600"/>
+        <img src="./assets/demo/artistic_fusion_001.png" alt="artistic fusion" title="artistic fusion" width="600"/>
     </a>
 </p>
-
-Some samples taken from the SJTU-VIS dataset, coupled with multi-scale textual prompts(including non-salient objects, salient objects, personal computersglobal and local context).
-
-<p align="center">
-    <a id="SAITS" href="#SAITS">
-        <img src="./docs/_static/sjtuvis.png" alt="SAITS Title" title="SAITS Title" width="600"/>
-    </a>
-</p>
-
-Now the directory tree should be the following:
-
-```
-- datasets
-- deepgaze
-    - deepgaze_pytorch
-- docs
-- blipsaliency
-    - examples
-    - blipsaliency
-    - projects
-- pysaliency
-    - notebooks
-    - optpy
-    - pysaliency
-- models
-- pretrained_weights
-    - deepgaze
-- saliency_toolbox
-- sanity_check
-    - notebooks
-    - src
-```
 
 ## ❖ Usage
 
-We use the BLIP pretrained model as our back-bone, and finetune it on the SJTU-VIS dataset. Also please take a tour to the [`pysaliency`](https://github.com/matthias-k/pysaliency) repo for further details.
+We use the CycleGAN model as our backbone, and train it on our mural-paining dataset. Also please take a tour to [`CycleGAN`](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix) repo for further details. The stable diffusion model is also used to produce munificient and copious image variation results. We have extended our diffusion-based model exploration journey among [ControlNet](https://github.com/Mikubill/sd-webui-controlnet), [T2I adapter](https://github.com/TencentARC/T2I-Adapter), [Dreambooth](https://github.com/d8ahazard/sd_dreambooth_extension), [Lora](https://github.com/bmaltais/kohya_ss) fine-tuning on SDXL and [INST](https://github.com/zyxElsa/InST).
 
 ## ❖ Quick Run
 
 <details open>
   <summary><b>👉 Click here to see the example 👀</b></summary>
 
-Please see the `.ipynb` notebooks under the `pysaliency/notebooks/` directory for reference about the training procedure and inference pass of our best model.
+Please see the `experiment.ipynb` notebooks under the `cyclegan` directory for reference about the training procedure and inference pass of our best model.
 
-Please see the `.ipynb` notebooks under the `sanity_check/notebooks/` directory for experiments about various gradient-based models with their backbone choosing from InceptionV3, CNN, MLP architecture.
+<p align="center">
+    <a id="SAITS" href="#SAITS">
+        <img src="./assets/demo/helper.png" alt="artistic fusion" title="artistic fusion" width="600"/>
+        <img src="./assets/demo/helper_2.png" alt="artistic fusion" title="artistic fusion" width="600"/>
+    </a>
+</p>
+
+Some image browsing tools to help you go over your collections quickly and efficiently.
+
+<p align="center">
+    <a id="SAITS" href="#SAITS">
+        <img src="./assets/demo/infinite_image_broswing.png" alt="artistic fusion" title="artistic fusion" width="600"/>
+        <img src="./assets/demo/infinite_image_broswing_2.png" alt="artistic fusion" title="artistic fusion" width="600"/>
+    </a>
+</p>
 
 </details>
 
@@ -201,37 +125,57 @@ Please see the `.ipynb` notebooks under the `sanity_check/notebooks/` directory 
 
 ## ❖ Experimental Results
 
+Samples of our CycleGAN result:
+
 <p align="center">
     <a id="SAITS" href="#SAITS">
-        <img src="./docs/_static/heatmap2.png" alt="SAITS Title" title="SAITS Title" width="600"/>
+        <img src="./assets/demo/artistic_fusion_002.png" alt="artistic fusion" title="artistic fusion" width="600"/>
+    </a>
+</p>
+
+Samples of our image variation result:
+
+<p align="center">
+    <a id="SAITS" href="#SAITfiS">
+        <img src="./assets/demo/artistic_fusion_003.png" alt="artistic fusion" title="artistic fusion" width="600"/>
+    </a>
+</p>
+
+Samples from our GAN+Diffusion pipeline:
+
+<p align="center">
+    <a id="SAITS" href="#SAITS">
+        <img src="./assets/demo/artistic_fusion_006.png" alt="artistic fusion" title="artistic fusion" width="600"/>
+    </a>
+</p>
+
+More results drawn from our final model's style transfer results:
+
+<p align="center">
+    <a id="SAITS" href="#SAITS">
+        <img src="./assets/demo/artistic_fusion_007.png" alt="artistic fusion" title="artistic fusion" width="600"/>
     </a>
 </p>
 
 <p align="center">
     <a id="SAITS" href="#SAITS">
-        <img src="./docs/_static/super_banner.png" alt="SAITS Title" title="SAITS Title" width="600"/>
-    </a>
-</p>
-
-<p align="center">
-    <a id="SAITS" href="#SAITS">
-        <img src="./docs/_static/super_banner2.png" alt="SAITS Title" title="SAITS Title" width="600"/>
+        <img src="./assets/demo/artistic_fusion_008.png" alt="artistic fusion" title="artistic fusion" width="600"/>
     </a>
 </p>
 
 ## ❖ Acknowledgments
 
-I extend my heartfelt gratitude to the esteemed faculty and dedicated teaching assistants of CS3324 for their invaluable guidance and support throughout my journey in image processing. Their profound knowledge, coupled with an unwavering commitment to nurturing curiosity and innovation, has been instrumental in my academic and personal growth. I am deeply appreciative of their efforts in creating a stimulating and enriching learning environment, which has significantly contributed to the development of this paper and my understanding of the field. My sincere thanks to each one of them for inspiring and challenging me to reach new heights in my studies.
+I extend my heartfelt gratitude to the esteemed faculty and dedicated teaching assistants of AI3603 for their invaluable guidance and support throughout my journey in image processing. Their profound knowledge, coupled with an unwavering commitment to nurturing curiosity and innovation, has been instrumental in my academic and personal growth. I am deeply appreciative of their efforts in creating a stimulating and enriching learning environment, which has significantly contributed to the development of this paper and my understanding of the field. My sincere thanks to each one of them for inspiring and challenging me to reach new heights in my studies.
 
 ### ✨Stars/forks/issues/PRs are all welcome!
 
 <details open>
 <summary><b><i>👏 Click to View Contributors: </i></b></summary>
 
-![Stargazers repo roster for @Learner209/text-guided-saliency](http://reporoster.com/stars/dark/Learner209/text-guided-saliency)
+![Stargazers repo roster for @Learner209/artistic-fusion](https://github.com/Learner209/artistic-fusion)
 
 </details>
 
 ## ❖ Last but Not Least
 
-If you have any additional questions or have interests in collaboration,please take a look at [my GitHub profile](https://github.com/Learner209) and feel free to contact me 😃.
+If you have any additional questions or have interests in collaboration,please feel free to contact me at [songshixiang](songshixiang@sjtu.edu.cn), [qisiyuan](qisiyuan7936@sjtu.edu.cn), [liuminghao](lmh209@sjtu.edu.cn) 😃.
