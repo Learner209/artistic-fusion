@@ -13,7 +13,7 @@
 # finetuned-no-lora
 # export COMMANDLINE_ARGS="--allow-code --xformers  --skip-install --api --no-gradio-queue --skip-torch-cuda-test --enable-insecure-extension-access --listen --device-id 1"
 # finetuned-with-lora
-export COMMANDLINE_ARGS="--allow-code --xformers --skip-install --api --skip-torch-cuda-test --share --disable-tls-verify --listen --port 8302 --gradio-auth z"
+export COMMANDLINE_ARGS="--allow-code --xformers --skip-install --api --skip-torch-cuda-test --share --disable-tls-verify --listen --port 8302"
 
 # python3 executable
 python_cmd="/mnt/homes/minghao/anaconda3/envs/ldm/bin/python"
