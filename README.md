@@ -45,19 +45,23 @@ Here we only two main variations of our method: the GAN+Diffusion pipeline and t
 
 GAN+Diffusion pipeline, with GAN-based solid style transfer capabilities, coupled with diffusion-enhanced variety and vitality(but deviates from the style transfer intent too easily):
 
-<p align="center">
+<!-- <p align="center">
     <a id="SAITS" href="#SAITS">
         <img src="./assets/demo/artistic_fusion_004.png" alt="artistic fusion" title="artistic fusion" width="600"/>
     </a>
-</p>
+</p> -->
+
+![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/artistic_fusion_004.png)
 
 Our final model: Diffusion + GAN framework, with Stable diffusion models' generative capabilities injected, followed by CycleGAN's style transfer pipeline.
 
-<p align="center">
+<!-- <p align="center">
     <a id="SAITS" href="#SAITS">
         <img src="./assets/demo/artistic_fusion_005.png" alt="artistic fusion" title="artistic fusion" width="600"/>
     </a>
-</p>
+</p> -->
+
+![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/artistic_fusion_005.png)
 
 ## ❖ Development Environment
 
@@ -86,11 +90,13 @@ We run on one image style transfer dataset.
 
 Here are some samples from our style image dataset:
 
-<p align="center">
+<!-- <p align="center">
     <a id="SAITS" href="#SAITS">
         <img src="./assets/demo/artistic_fusion_001.png" alt="artistic fusion" title="artistic fusion" width="600"/>
     </a>
-</p>
+</p> -->
+
+![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/artistic_fusion_001.png)
 
 ## ❖ Usage
 
@@ -103,21 +109,27 @@ We use the CycleGAN model as our backbone, and train it on our mural-paining dat
 
 Please see the `experiment.ipynb` notebooks under the `cyclegan` directory for reference about the training procedure and inference pass of our best model.
 
-<p align="center">
+<!-- <p align="center">
     <a id="SAITS" href="#SAITS">
         <img src="./assets/demo/helper.png" alt="artistic fusion" title="artistic fusion" width="600"/>
         <img src="./assets/demo/helper_2.png" alt="artistic fusion" title="artistic fusion" width="600"/>
     </a>
-</p>
+</p> -->
+
+![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/helper.png)
+![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/helper_2.png)
 
 Some image browsing tools to help you go over your collections quickly and efficiently.
 
-<p align="center">
+<!-- <p align="center">
     <a id="SAITS" href="#SAITS">
         <img src="./assets/demo/infinite_image_broswing.png" alt="artistic fusion" title="artistic fusion" width="600"/>
         <img src="./assets/demo/infinite_image_broswing_2.png" alt="artistic fusion" title="artistic fusion" width="600"/>
     </a>
-</p>
+</p> -->
+
+![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/infinite_image_broswing.png)
+![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/infinite_image_broswing_2.png)
 
 </details>
 
@@ -127,41 +139,52 @@ Some image browsing tools to help you go over your collections quickly and effic
 
 Samples of our CycleGAN result:
 
-<p align="center">
+<!-- <p align="center">
     <a id="SAITS" href="#SAITS">
         <img src="./assets/demo/artistic_fusion_002.png" alt="artistic fusion" title="artistic fusion" width="600"/>
     </a>
-</p>
+</p> -->
+
+![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/artistic_fusion_002.png)
 
 Samples of our image variation result:
 
-<p align="center">
+<!-- <p align="center">
     <a id="SAITS" href="#SAITfiS">
         <img src="./assets/demo/artistic_fusion_003.png" alt="artistic fusion" title="artistic fusion" width="600"/>
     </a>
-</p>
+</p> -->
+
+![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/artistic_fusion_003.png)
 
 Samples from our GAN+Diffusion pipeline:
 
+<!--
 <p align="center">
     <a id="SAITS" href="#SAITS">
         <img src="./assets/demo/artistic_fusion_006.png" alt="artistic fusion" title="artistic fusion" width="600"/>
     </a>
-</p>
+</p> -->
+
+![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/artistic_fusion_006.png)
 
 More results drawn from our final model's style transfer results:
 
-<p align="center">
+<!-- <p align="center">
     <a id="SAITS" href="#SAITS">
         <img src="./assets/demo/artistic_fusion_007.png" alt="artistic fusion" title="artistic fusion" width="600"/>
     </a>
-</p>
+</p> -->
 
-<p align="center">
+![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/artistic_fusion_007.png)
+
+<!-- <p align="center">
     <a id="SAITS" href="#SAITS">
         <img src="./assets/demo/artistic_fusion_008.png" alt="artistic fusion" title="artistic fusion" width="600"/>
     </a>
-</p>
+</p> -->
+
+![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/artistic_fusion_008.png)
 
 ## ❖ Acknowledgments
 
