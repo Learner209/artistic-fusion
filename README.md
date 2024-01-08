@@ -25,9 +25,6 @@ In essence, **Artistic Fusion** is more than an addition to the compendium of im
 
 > 📣 Attention please: <br> > **Artistic Fusion** is developed heavily under the framework of [stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui), an ultra-awesome project clustering copious diffusion-based generative models. Its instellation of image generaitive models provided us with a plentiful playground with munificient probablities. An example of using stale-diffusion-webui for generating image variation(a indispensable component of our final model) results are shown below. With [stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui), easy peasy! 😉
 
-<details open>
-  <summary><b>👉 Click here to see the example 👀</b></summary>
-
 ## ❖ Contributions and Performance
 
 ⦿ **`Contributions`**:
@@ -84,37 +81,33 @@ conda activate ldm
 ./webui.sh
 ```
 
-Additionally, if you want to reproduce image-variation results in the paper(based on `sd-unclip-h.ckpt`), !🤗
+Additionally, if you want to reproduce image-variation results in the paper(based on `sd-unclip-h.ckpt`), please follow the procedures delineated below ! 🤗
 
-Please follow the procedures delineated below:
+1. We recommend users to change these options back if users mainly use Stable Diffusion 1.5.
 
-1. This guide will configurate your webui to perfectly reproduce our results in Stable diffusion UI, so that we can make sure that our later steps on controlnet can also perfectly reproduce our paper's results.
-
-2. Besides, these steps will influence the behaviors of your webui, and we recommend users to change these options back if users mainly use Stable Diffusion 1.5.
-
-3. Make sure that your webui version is at least 1.6.0. We will use "sd21-unclip-h.ckpt" for the test so you should have it. Go to your webui setting, "Show all pages", then Ctrl+F open search, search for "random", then make sure to use "CPU" seed (in Setting->Stable Diffusion)
+1. Make sure that your webui version is at least 1.6.0. We will use "sd21-unclip-h.ckpt" for the test so you should have it. Go to your webui setting, "Show all pages", then Ctrl+F open search, search for "random", then make sure to use "CPU" seed (in Setting->Stable Diffusion)
 
     ![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/guides_01.png)
 
-4. then search for "sgm", check "SGM noise multiplier" (in Setting->Sampler parameters)
+1. then search for "sgm", check "SGM noise multiplier" (in Setting->Sampler parameters)
 
     ![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/guides_02.png)
 
-5. then search "deterministic", make sure to UNCHECK "Do not make DPM++ SDE deterministic across different batch sizes." (Do NOT select it, in Setting->Compatibility)
+1. then search "deterministic", make sure to UNCHECK "Do not make DPM++ SDE deterministic across different batch sizes." (Do NOT select it, in Setting->Compatibility)
 
     ![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/guides_03.png)
 
-6. then apply the settings:
+1. then apply the settings:
 
     ![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/guides_04.png)
 
-7. then set the settings below:
+1. then set the settings below:
 
     ![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/guides_05.png)
 
     ![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/guides_06.png)
 
-8. Now select a image from our test datase(if you are using batch mode, please specify the home directory of the test dataset ). Then hit Ctrl+Enter and enjoy your results !!! 😃😃😃
+1. Now select a image from our test datase(if you are using batch mode, please specify the home directory of the test dataset ). Then hit Ctrl+Enter and enjoy your results !!! 😃😃😃
 
 ## ❖ Datasets
 
@@ -228,13 +221,6 @@ More results drawn from our final model's style transfer results:
 I extend my heartfelt gratitude to the esteemed faculty and dedicated teaching assistants of AI3603 for their invaluable guidance and support throughout my journey in image processing. Their profound knowledge, coupled with an unwavering commitment to nurturing curiosity and innovation, has been instrumental in my academic and personal growth. I am deeply appreciative of their efforts in creating a stimulating and enriching learning environment, which has significantly contributed to the development of this paper and my understanding of the field. My sincere thanks to each one of them for inspiring and challenging me to reach new heights in my studies.
 
 ### ✨Stars/forks/issues/PRs are all welcome!
-
-<details open>
-<summary><b><i>👏 Click to View Contributors: </i></b></summary>
-
-![Stargazers repo roster for @Learner209/artistic-fusion](https://github.com/Learner209/artistic-fusion)
-
-</details>
 
 ## ❖ Last but Not Least
 
