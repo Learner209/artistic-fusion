@@ -224,4 +224,4 @@ I extend my heartfelt gratitude to the esteemed faculty and dedicated teaching a
 
 ## ❖ Last but Not Least
 
-If you have any additional questions or have interests in collaboration,please feel free to contact me at [songshixiang](songshixiang@sjtu.edu.cn), [qisiyuan](qisiyuan7936@sjtu.edu.cn), [liuminghao](lmh209@sjtu.edu.cn) 😃.
+If you have any additional questions or have interests in collaboration,please feel free to contact me at [songshixiang](mailto:songshixiang@sjtu.edu.cn), [qisiyuan](mailto:qisiyuan7936@sjtu.edu.cn), [liuminghao](mailto:lmh209@sjtu.edu.cn) 😃.
