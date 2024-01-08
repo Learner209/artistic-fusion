@@ -38,7 +38,10 @@ notification.mp3
 /package-lock.json
 /.coverage*
 
-
-
 # self-customized .gitignore files.
 datasets/
+# cyclegan-related results
+cyclegan/checkpoints/*
+cyclegan/logs/*
+cyclegan/pids/*
+cyclegan/tensorboard/*

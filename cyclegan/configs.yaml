@@ -1,0 +1,640 @@
+adam_betas:
+  computed:
+  - 0.5
+  - 0.999
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: adam_betas
+  options: []
+  order: 8
+  type: <class 'tuple'>
+  value: null
+batch_size:
+  computed: 4
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: batch_size
+  options: []
+  order: 16
+  type: <class 'int'>
+  value: null
+cycle_loss:
+  computed: L1Loss()
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: cycle_loss
+  options: []
+  order: 18
+  type: <class 'torch.nn.modules.loss.L1Loss'>
+  value: null
+cyclic_loss_coefficient:
+  computed: 10.0
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: cyclic_loss_coefficient
+  options: []
+  order: 22
+  type: <class 'float'>
+  value: null
+data_loader_workers:
+  computed: 8
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: data_loader_workers
+  options: []
+  order: 17
+  type: <class 'int'>
+  value: null
+dataloader:
+  computed: torch.utils.data.dataloader.DataLoader
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: dataloader
+  options: []
+  order: 21
+  type: <class 'torch.utils.data.dataloader.DataLoader'>
+  value: torch.utils.data.dataloader.DataLoader
+dataset_name:
+  computed: real2mural
+  is_explicitly_specified: true
+  is_hyperparam: null
+  is_meta: null
+  name: dataset_name
+  options: []
+  order: 15
+  type: <class 'str'>
+  value: real2mural
+decay_start:
+  computed: 100
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: decay_start
+  options: []
+  order: 12
+  type: <class 'int'>
+  value: null
+device:
+  computed: cuda:0
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: device
+  options: []
+  order: 4
+  type: <class 'torch.device'>
+  value: null
+device.cuda_device:
+  computed: 0
+  is_explicitly_specified: false
+  is_hyperparam: false
+  is_meta: null
+  name: cuda_device
+  options: []
+  order: 3
+  type: <class 'int'>
+  value: null
+device.device:
+  computed: cuda:0
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: device
+  options:
+  - _device
+  order: 0
+  type: <class 'torch.device'>
+  value: null
+device.device_info:
+  computed: GPU:0 - Tesla V100-SXM3-32GB
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: device_info
+  options:
+  - _device_info
+  order: 1
+  type: <class 'labml_helpers.device.DeviceInfo'>
+  value: null
+device.use_cuda:
+  computed: true
+  is_explicitly_specified: false
+  is_hyperparam: false
+  is_meta: null
+  name: use_cuda
+  options: []
+  order: 2
+  type: <class 'bool'>
+  value: null
+discriminator_lr_scheduler:
+  computed: torch.optim.lr_scheduler.LambdaLR
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: discriminator_lr_scheduler
+  options: []
+  order: 26
+  type: <class 'torch.optim.lr_scheduler.LambdaLR'>
+  value: torch.optim.lr_scheduler.LambdaLR
+discriminator_optimizer:
+  computed: "Adam (\nParameter Group 0\n    amsgrad: False\n    betas: (0.5, 0.999)\n\
+    \    capturable: False\n    differentiable: False\n    eps: 1e-08\n    foreach:\
+    \ None\n    fused: None\n    initial_lr: 0.0002\n    lr: 0.0002\n    maximize:\
+    \ False\n    weight_decay: 0\n)"
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: discriminator_optimizer
+  options: []
+  order: 14
+  type: <class 'torch.optim.adam.Adam'>
+  value: "Adam (\nParameter Group 0\n    amsgrad: False\n    betas: (0.5, 0.999)\n\
+    \    capturable: False\n    differentiable: False\n    eps: 1e-08\n    foreach:\
+    \ None\n    fused: None\n    initial_lr: 0.0002\n    lr: 0.0002\n    maximize:\
+    \ False\n    weight_decay: 0\n)"
+discriminator_x:
+  computed: "Discriminator(\n  (layers): Sequential(\n    (0): DiscriminatorBlock(\n\
+    \      (layers): Sequential(\n        (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2,\
+    \ 2), padding=(1, 1))\n        (1): LeakyReLU(negative_slope=0.2, inplace=True)\n\
+    \      )\n    )\n    (1): DiscriminatorBlock(\n      (layers): Sequential(\n \
+    \       (0): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))\n\
+    \        (1): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): LeakyReLU(negative_slope=0.2, inplace=True)\n      )\n    )\n  \
+    \  (2): DiscriminatorBlock(\n      (layers): Sequential(\n        (0): Conv2d(128,\
+    \ 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))\n        (1): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (2):\
+    \ LeakyReLU(negative_slope=0.2, inplace=True)\n      )\n    )\n    (3): DiscriminatorBlock(\n\
+    \      (layers): Sequential(\n        (0): Conv2d(256, 512, kernel_size=(4, 4),\
+    \ stride=(2, 2), padding=(1, 1))\n        (1): InstanceNorm2d(512, eps=1e-05,\
+    \ momentum=0.1, affine=False, track_running_stats=False)\n        (2): LeakyReLU(negative_slope=0.2,\
+    \ inplace=True)\n      )\n    )\n    (4): ZeroPad2d((1, 0, 1, 0))\n    (5): Conv2d(512,\
+    \ 1, kernel_size=(4, 4), stride=(1, 1), padding=(1, 1))\n  )\n)"
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: discriminator_x
+  options: []
+  order: 9
+  type: <class '__main__.Discriminator'>
+  value: "Discriminator(\n  (layers): Sequential(\n    (0): DiscriminatorBlock(\n\
+    \      (layers): Sequential(\n        (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2,\
+    \ 2), padding=(1, 1))\n        (1): LeakyReLU(negative_slope=0.2, inplace=True)\n\
+    \      )\n    )\n    (1): DiscriminatorBlock(\n      (layers): Sequential(\n \
+    \       (0): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))\n\
+    \        (1): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): LeakyReLU(negative_slope=0.2, inplace=True)\n      )\n    )\n  \
+    \  (2): DiscriminatorBlock(\n      (layers): Sequential(\n        (0): Conv2d(128,\
+    \ 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))\n        (1): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (2):\
+    \ LeakyReLU(negative_slope=0.2, inplace=True)\n      )\n    )\n    (3): DiscriminatorBlock(\n\
+    \      (layers): Sequential(\n        (0): Conv2d(256, 512, kernel_size=(4, 4),\
+    \ stride=(2, 2), padding=(1, 1))\n        (1): InstanceNorm2d(512, eps=1e-05,\
+    \ momentum=0.1, affine=False, track_running_stats=False)\n        (2): LeakyReLU(negative_slope=0.2,\
+    \ inplace=True)\n      )\n    )\n    (4): ZeroPad2d((1, 0, 1, 0))\n    (5): Conv2d(512,\
+    \ 1, kernel_size=(4, 4), stride=(1, 1), padding=(1, 1))\n  )\n)"
+discriminator_y:
+  computed: "Discriminator(\n  (layers): Sequential(\n    (0): DiscriminatorBlock(\n\
+    \      (layers): Sequential(\n        (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2,\
+    \ 2), padding=(1, 1))\n        (1): LeakyReLU(negative_slope=0.2, inplace=True)\n\
+    \      )\n    )\n    (1): DiscriminatorBlock(\n      (layers): Sequential(\n \
+    \       (0): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))\n\
+    \        (1): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): LeakyReLU(negative_slope=0.2, inplace=True)\n      )\n    )\n  \
+    \  (2): DiscriminatorBlock(\n      (layers): Sequential(\n        (0): Conv2d(128,\
+    \ 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))\n        (1): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (2):\
+    \ LeakyReLU(negative_slope=0.2, inplace=True)\n      )\n    )\n    (3): DiscriminatorBlock(\n\
+    \      (layers): Sequential(\n        (0): Conv2d(256, 512, kernel_size=(4, 4),\
+    \ stride=(2, 2), padding=(1, 1))\n        (1): InstanceNorm2d(512, eps=1e-05,\
+    \ momentum=0.1, affine=False, track_running_stats=False)\n        (2): LeakyReLU(negative_slope=0.2,\
+    \ inplace=True)\n      )\n    )\n    (4): ZeroPad2d((1, 0, 1, 0))\n    (5): Conv2d(512,\
+    \ 1, kernel_size=(4, 4), stride=(1, 1), padding=(1, 1))\n  )\n)"
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: discriminator_y
+  options: []
+  order: 10
+  type: <class '__main__.Discriminator'>
+  value: "Discriminator(\n  (layers): Sequential(\n    (0): DiscriminatorBlock(\n\
+    \      (layers): Sequential(\n        (0): Conv2d(3, 64, kernel_size=(4, 4), stride=(2,\
+    \ 2), padding=(1, 1))\n        (1): LeakyReLU(negative_slope=0.2, inplace=True)\n\
+    \      )\n    )\n    (1): DiscriminatorBlock(\n      (layers): Sequential(\n \
+    \       (0): Conv2d(64, 128, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))\n\
+    \        (1): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): LeakyReLU(negative_slope=0.2, inplace=True)\n      )\n    )\n  \
+    \  (2): DiscriminatorBlock(\n      (layers): Sequential(\n        (0): Conv2d(128,\
+    \ 256, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1))\n        (1): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (2):\
+    \ LeakyReLU(negative_slope=0.2, inplace=True)\n      )\n    )\n    (3): DiscriminatorBlock(\n\
+    \      (layers): Sequential(\n        (0): Conv2d(256, 512, kernel_size=(4, 4),\
+    \ stride=(2, 2), padding=(1, 1))\n        (1): InstanceNorm2d(512, eps=1e-05,\
+    \ momentum=0.1, affine=False, track_running_stats=False)\n        (2): LeakyReLU(negative_slope=0.2,\
+    \ inplace=True)\n      )\n    )\n    (4): ZeroPad2d((1, 0, 1, 0))\n    (5): Conv2d(512,\
+    \ 1, kernel_size=(4, 4), stride=(1, 1), padding=(1, 1))\n  )\n)"
+epochs:
+  computed: 35
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: epochs
+  options: []
+  order: 11
+  type: <class 'int'>
+  value: null
+gan_loss:
+  computed: MSELoss()
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: gan_loss
+  options: []
+  order: 19
+  type: <class 'torch.nn.modules.loss.MSELoss'>
+  value: null
+generator_lr_scheduler:
+  computed: torch.optim.lr_scheduler.LambdaLR
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: generator_lr_scheduler
+  options: []
+  order: 25
+  type: <class 'torch.optim.lr_scheduler.LambdaLR'>
+  value: torch.optim.lr_scheduler.LambdaLR
+generator_optimizer:
+  computed: "Adam (\nParameter Group 0\n    amsgrad: False\n    betas: (0.5, 0.999)\n\
+    \    capturable: False\n    differentiable: False\n    eps: 1e-08\n    foreach:\
+    \ None\n    fused: None\n    initial_lr: 0.0002\n    lr: 0.0002\n    maximize:\
+    \ False\n    weight_decay: 0\n)"
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: generator_optimizer
+  options: []
+  order: 13
+  type: <class 'torch.optim.adam.Adam'>
+  value: "Adam (\nParameter Group 0\n    amsgrad: False\n    betas: (0.5, 0.999)\n\
+    \    capturable: False\n    differentiable: False\n    eps: 1e-08\n    foreach:\
+    \ None\n    fused: None\n    initial_lr: 0.0002\n    lr: 0.0002\n    maximize:\
+    \ False\n    weight_decay: 0\n)"
+generator_xy:
+  computed: "GeneratorResNet(\n  (layers): Sequential(\n    (0): Conv2d(3, 64, kernel_size=(7,\
+    \ 7), stride=(1, 1), padding=(3, 3), padding_mode=reflect)\n    (1): InstanceNorm2d(64,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n    (2):\
+    \ ReLU(inplace=True)\n    (3): Conv2d(64, 128, kernel_size=(3, 3), stride=(2,\
+    \ 2), padding=(1, 1))\n    (4): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False,\
+    \ track_running_stats=False)\n    (5): ReLU(inplace=True)\n    (6): Conv2d(128,\
+    \ 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))\n    (7): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n    (8):\
+    \ ReLU(inplace=True)\n    (9): ResidualBlock(\n      (block): Sequential(\n  \
+    \      (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1),\
+    \ padding_mode=reflect)\n        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (2): ReLU(inplace=True)\n\
+    \        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1,\
+    \ 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (5): ReLU(inplace=True)\n\
+    \      )\n    )\n    (10): ResidualBlock(\n      (block): Sequential(\n      \
+    \  (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n\
+    \        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): ReLU(inplace=True)\n        (3): Conv2d(256, 256, kernel_size=(3,\
+    \ 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (5):\
+    \ ReLU(inplace=True)\n      )\n    )\n    (11): ResidualBlock(\n      (block):\
+    \ Sequential(\n        (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1),\
+    \ padding=(1, 1), padding_mode=reflect)\n        (1): InstanceNorm2d(256, eps=1e-05,\
+    \ momentum=0.1, affine=False, track_running_stats=False)\n        (2): ReLU(inplace=True)\n\
+    \        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1,\
+    \ 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (5): ReLU(inplace=True)\n\
+    \      )\n    )\n    (12): ResidualBlock(\n      (block): Sequential(\n      \
+    \  (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n\
+    \        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): ReLU(inplace=True)\n        (3): Conv2d(256, 256, kernel_size=(3,\
+    \ 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (5):\
+    \ ReLU(inplace=True)\n      )\n    )\n    (13): ResidualBlock(\n      (block):\
+    \ Sequential(\n        (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1),\
+    \ padding=(1, 1), padding_mode=reflect)\n        (1): InstanceNorm2d(256, eps=1e-05,\
+    \ momentum=0.1, affine=False, track_running_stats=False)\n        (2): ReLU(inplace=True)\n\
+    \        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1,\
+    \ 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (5): ReLU(inplace=True)\n\
+    \      )\n    )\n    (14): ResidualBlock(\n      (block): Sequential(\n      \
+    \  (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n\
+    \        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): ReLU(inplace=True)\n        (3): Conv2d(256, 256, kernel_size=(3,\
+    \ 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (5):\
+    \ ReLU(inplace=True)\n      )\n    )\n    (15): ResidualBlock(\n      (block):\
+    \ Sequential(\n        (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1),\
+    \ padding=(1, 1), padding_mode=reflect)\n        (1): InstanceNorm2d(256, eps=1e-05,\
+    \ momentum=0.1, affine=False, track_running_stats=False)\n        (2): ReLU(inplace=True)\n\
+    \        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1,\
+    \ 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (5): ReLU(inplace=True)\n\
+    \      )\n    )\n    (16): ResidualBlock(\n      (block): Sequential(\n      \
+    \  (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n\
+    \        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): ReLU(inplace=True)\n        (3): Conv2d(256, 256, kernel_size=(3,\
+    \ 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (5):\
+    \ ReLU(inplace=True)\n      )\n    )\n    (17): ResidualBlock(\n      (block):\
+    \ Sequential(\n        (0): Conv2d [[...]]"
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: generator_xy
+  options: []
+  order: 5
+  type: <class '__main__.GeneratorResNet'>
+  value: "GeneratorResNet(\n  (layers): Sequential(\n    (0): Conv2d(3, 64, kernel_size=(7,\
+    \ 7), stride=(1, 1), padding=(3, 3), padding_mode=reflect)\n    (1): InstanceNorm2d(64,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n    (2):\
+    \ ReLU(inplace=True)\n    (3): Conv2d(64, 128, kernel_size=(3, 3), stride=(2,\
+    \ 2), padding=(1, 1))\n    (4): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False,\
+    \ track_running_stats=False)\n    (5): ReLU(inplace=True)\n    (6): Conv2d(128,\
+    \ 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))\n    (7): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n    (8):\
+    \ ReLU(inplace=True)\n    (9): ResidualBlock(\n      (block): Sequential(\n  \
+    \      (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1),\
+    \ padding_mode=reflect)\n        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (2): ReLU(inplace=True)\n\
+    \        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1,\
+    \ 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (5): ReLU(inplace=True)\n\
+    \      )\n    )\n    (10): ResidualBlock(\n      (block): Sequential(\n      \
+    \  (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n\
+    \        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): ReLU(inplace=True)\n        (3): Conv2d(256, 256, kernel_size=(3,\
+    \ 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (5):\
+    \ ReLU(inplace=True)\n      )\n    )\n    (11): ResidualBlock(\n      (block):\
+    \ Sequential(\n        (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1),\
+    \ padding=(1, 1), padding_mode=reflect)\n        (1): InstanceNorm2d(256, eps=1e-05,\
+    \ momentum=0.1, affine=False, track_running_stats=False)\n        (2): ReLU(inplace=True)\n\
+    \        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1,\
+    \ 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (5): ReLU(inplace=True)\n\
+    \      )\n    )\n    (12): ResidualBlock(\n      (block): Sequential(\n      \
+    \  (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n\
+    \        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): ReLU(inplace=True)\n        (3): Conv2d(256, 256, kernel_size=(3,\
+    \ 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (5):\
+    \ ReLU(inplace=True)\n      )\n    )\n    (13): ResidualBlock(\n      (block):\
+    \ Sequential(\n        (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1),\
+    \ padding=(1, 1), padding_mode=reflect)\n        (1): InstanceNorm2d(256, eps=1e-05,\
+    \ momentum=0.1, affine=False, track_running_stats=False)\n        (2): ReLU(inplace=True)\n\
+    \        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1,\
+    \ 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (5): ReLU(inplace=True)\n\
+    \      )\n    )\n    (14): ResidualBlock(\n      (block): Sequential(\n      \
+    \  (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n\
+    \        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): ReLU(inplace=True)\n        (3): Conv2d(256, 256, kernel_size=(3,\
+    \ 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (5):\
+    \ ReLU(inplace=True)\n      )\n    )\n    (15): ResidualBlock(\n      (block):\
+    \ Sequential(\n        (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1),\
+    \ padding=(1, 1), padding_mode=reflect)\n        (1): InstanceNorm2d(256, eps=1e-05,\
+    \ momentum=0.1, affine=False, track_running_stats=False)\n        (2): ReLU(inplace=True)\n\
+    \        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1,\
+    \ 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (5): ReLU(inplace=True)\n\
+    \      )\n    )\n    (16): ResidualBlock(\n      (block): Sequential(\n      \
+    \  (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n\
+    \        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): ReLU(inplace=True)\n        (3): Conv2d(256, 256, kernel_size=(3,\
+    \ 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (5):\
+    \ ReLU(inplace=True)\n      )\n    )\n    (17): ResidualBlock(\n      (block):\
+    \ Sequential(\n        (0): Conv2d [[...]]"
+generator_yx:
+  computed: "GeneratorResNet(\n  (layers): Sequential(\n    (0): Conv2d(3, 64, kernel_size=(7,\
+    \ 7), stride=(1, 1), padding=(3, 3), padding_mode=reflect)\n    (1): InstanceNorm2d(64,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n    (2):\
+    \ ReLU(inplace=True)\n    (3): Conv2d(64, 128, kernel_size=(3, 3), stride=(2,\
+    \ 2), padding=(1, 1))\n    (4): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False,\
+    \ track_running_stats=False)\n    (5): ReLU(inplace=True)\n    (6): Conv2d(128,\
+    \ 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))\n    (7): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n    (8):\
+    \ ReLU(inplace=True)\n    (9): ResidualBlock(\n      (block): Sequential(\n  \
+    \      (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1),\
+    \ padding_mode=reflect)\n        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (2): ReLU(inplace=True)\n\
+    \        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1,\
+    \ 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (5): ReLU(inplace=True)\n\
+    \      )\n    )\n    (10): ResidualBlock(\n      (block): Sequential(\n      \
+    \  (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n\
+    \        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): ReLU(inplace=True)\n        (3): Conv2d(256, 256, kernel_size=(3,\
+    \ 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (5):\
+    \ ReLU(inplace=True)\n      )\n    )\n    (11): ResidualBlock(\n      (block):\
+    \ Sequential(\n        (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1),\
+    \ padding=(1, 1), padding_mode=reflect)\n        (1): InstanceNorm2d(256, eps=1e-05,\
+    \ momentum=0.1, affine=False, track_running_stats=False)\n        (2): ReLU(inplace=True)\n\
+    \        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1,\
+    \ 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (5): ReLU(inplace=True)\n\
+    \      )\n    )\n    (12): ResidualBlock(\n      (block): Sequential(\n      \
+    \  (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n\
+    \        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): ReLU(inplace=True)\n        (3): Conv2d(256, 256, kernel_size=(3,\
+    \ 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (5):\
+    \ ReLU(inplace=True)\n      )\n    )\n    (13): ResidualBlock(\n      (block):\
+    \ Sequential(\n        (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1),\
+    \ padding=(1, 1), padding_mode=reflect)\n        (1): InstanceNorm2d(256, eps=1e-05,\
+    \ momentum=0.1, affine=False, track_running_stats=False)\n        (2): ReLU(inplace=True)\n\
+    \        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1,\
+    \ 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (5): ReLU(inplace=True)\n\
+    \      )\n    )\n    (14): ResidualBlock(\n      (block): Sequential(\n      \
+    \  (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n\
+    \        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): ReLU(inplace=True)\n        (3): Conv2d(256, 256, kernel_size=(3,\
+    \ 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (5):\
+    \ ReLU(inplace=True)\n      )\n    )\n    (15): ResidualBlock(\n      (block):\
+    \ Sequential(\n        (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1),\
+    \ padding=(1, 1), padding_mode=reflect)\n        (1): InstanceNorm2d(256, eps=1e-05,\
+    \ momentum=0.1, affine=False, track_running_stats=False)\n        (2): ReLU(inplace=True)\n\
+    \        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1,\
+    \ 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (5): ReLU(inplace=True)\n\
+    \      )\n    )\n    (16): ResidualBlock(\n      (block): Sequential(\n      \
+    \  (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n\
+    \        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): ReLU(inplace=True)\n        (3): Conv2d(256, 256, kernel_size=(3,\
+    \ 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (5):\
+    \ ReLU(inplace=True)\n      )\n    )\n    (17): ResidualBlock(\n      (block):\
+    \ Sequential(\n        (0): Conv2d [[...]]"
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: generator_yx
+  options: []
+  order: 6
+  type: <class '__main__.GeneratorResNet'>
+  value: "GeneratorResNet(\n  (layers): Sequential(\n    (0): Conv2d(3, 64, kernel_size=(7,\
+    \ 7), stride=(1, 1), padding=(3, 3), padding_mode=reflect)\n    (1): InstanceNorm2d(64,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n    (2):\
+    \ ReLU(inplace=True)\n    (3): Conv2d(64, 128, kernel_size=(3, 3), stride=(2,\
+    \ 2), padding=(1, 1))\n    (4): InstanceNorm2d(128, eps=1e-05, momentum=0.1, affine=False,\
+    \ track_running_stats=False)\n    (5): ReLU(inplace=True)\n    (6): Conv2d(128,\
+    \ 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))\n    (7): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n    (8):\
+    \ ReLU(inplace=True)\n    (9): ResidualBlock(\n      (block): Sequential(\n  \
+    \      (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1),\
+    \ padding_mode=reflect)\n        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (2): ReLU(inplace=True)\n\
+    \        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1,\
+    \ 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (5): ReLU(inplace=True)\n\
+    \      )\n    )\n    (10): ResidualBlock(\n      (block): Sequential(\n      \
+    \  (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n\
+    \        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): ReLU(inplace=True)\n        (3): Conv2d(256, 256, kernel_size=(3,\
+    \ 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (5):\
+    \ ReLU(inplace=True)\n      )\n    )\n    (11): ResidualBlock(\n      (block):\
+    \ Sequential(\n        (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1),\
+    \ padding=(1, 1), padding_mode=reflect)\n        (1): InstanceNorm2d(256, eps=1e-05,\
+    \ momentum=0.1, affine=False, track_running_stats=False)\n        (2): ReLU(inplace=True)\n\
+    \        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1,\
+    \ 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (5): ReLU(inplace=True)\n\
+    \      )\n    )\n    (12): ResidualBlock(\n      (block): Sequential(\n      \
+    \  (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n\
+    \        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): ReLU(inplace=True)\n        (3): Conv2d(256, 256, kernel_size=(3,\
+    \ 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (5):\
+    \ ReLU(inplace=True)\n      )\n    )\n    (13): ResidualBlock(\n      (block):\
+    \ Sequential(\n        (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1),\
+    \ padding=(1, 1), padding_mode=reflect)\n        (1): InstanceNorm2d(256, eps=1e-05,\
+    \ momentum=0.1, affine=False, track_running_stats=False)\n        (2): ReLU(inplace=True)\n\
+    \        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1,\
+    \ 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (5): ReLU(inplace=True)\n\
+    \      )\n    )\n    (14): ResidualBlock(\n      (block): Sequential(\n      \
+    \  (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n\
+    \        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): ReLU(inplace=True)\n        (3): Conv2d(256, 256, kernel_size=(3,\
+    \ 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (5):\
+    \ ReLU(inplace=True)\n      )\n    )\n    (15): ResidualBlock(\n      (block):\
+    \ Sequential(\n        (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1),\
+    \ padding=(1, 1), padding_mode=reflect)\n        (1): InstanceNorm2d(256, eps=1e-05,\
+    \ momentum=0.1, affine=False, track_running_stats=False)\n        (2): ReLU(inplace=True)\n\
+    \        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1,\
+    \ 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256, eps=1e-05, momentum=0.1,\
+    \ affine=False, track_running_stats=False)\n        (5): ReLU(inplace=True)\n\
+    \      )\n    )\n    (16): ResidualBlock(\n      (block): Sequential(\n      \
+    \  (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n\
+    \        (1): InstanceNorm2d(256, eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n\
+    \        (2): ReLU(inplace=True)\n        (3): Conv2d(256, 256, kernel_size=(3,\
+    \ 3), stride=(1, 1), padding=(1, 1), padding_mode=reflect)\n        (4): InstanceNorm2d(256,\
+    \ eps=1e-05, momentum=0.1, affine=False, track_running_stats=False)\n        (5):\
+    \ ReLU(inplace=True)\n      )\n    )\n    (17): ResidualBlock(\n      (block):\
+    \ Sequential(\n        (0): Conv2d [[...]]"
+identity_loss:
+  computed: L1Loss()
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: identity_loss
+  options: []
+  order: 20
+  type: <class 'torch.nn.modules.loss.L1Loss'>
+  value: null
+identity_loss_coefficient:
+  computed: 5.0
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: identity_loss_coefficient
+  options: []
+  order: 23
+  type: <class 'float'>
+  value: null
+img_channels:
+  computed: 3
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: img_channels
+  options: []
+  order: 0
+  type: <class 'int'>
+  value: null
+img_height:
+  computed: 256
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: img_height
+  options: []
+  order: 1
+  type: <class 'int'>
+  value: null
+img_width:
+  computed: 256
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: img_width
+  options: []
+  order: 2
+  type: <class 'int'>
+  value: null
+learning_rate:
+  computed: 0.0002
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: learning_rate
+  options: []
+  order: 7
+  type: <class 'float'>
+  value: null
+n_residual_blocks:
+  computed: 9
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: n_residual_blocks
+  options: []
+  order: 3
+  type: <class 'int'>
+  value: null
+sample_interval:
+  computed: 500
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: sample_interval
+  options: []
+  order: 24
+  type: <class 'int'>
+  value: null
+valid_dataloader:
+  computed: null
+  is_explicitly_specified: false
+  is_hyperparam: null
+  is_meta: null
+  name: valid_dataloader
+  options: []
+  order: -1
+  type: <class 'torch.utils.data.dataloader.DataLoader'>
+  value: torch.utils.data.dataloader.DataLoader

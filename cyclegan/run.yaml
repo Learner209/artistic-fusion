@@ -1,0 +1,18 @@
+comment: ''
+commit: unknown
+commit_message: ''
+distributed_rank: 0
+distributed_world_size: 0
+is_dirty: false
+load_run: 8df099c0a0c811ee88a05cff35c18842
+name: cycle_gan
+notes: ''
+python_file: __init__.py
+repo_remotes: []
+start_step: 1038973
+tags:
+- gan
+- cycle
+trial_date: '2023-12-23'
+trial_time: '12:31:05'
+uuid: 15e3ddfaa14c11ee9bb25cff35c18842

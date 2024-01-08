@@ -81,6 +81,15 @@ conda activate ldm
 ./webui.sh
 ```
 
+If you are looking to reproduce CycleGAN results in the paper, please install the conda env first.
+
+```bash
+cd cyclegan/
+conda env create -f environment.yml
+conda activate cycleGan
+cd ..
+```
+
 Additionally, if you want to reproduce image-variation results in the paper(based on `sd-unclip-h.ckpt`), please follow the procedures delineated below ! 🤗
 
 1. We recommend users to change these options back if users mainly use Stable Diffusion 1.5.
@@ -126,6 +135,8 @@ Here are some samples from our style image dataset:
 ## ❖ Usage
 
 We use the CycleGAN model as our backbone, and train it on our mural-paining dataset. Also please take a tour to [`CycleGAN`](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix) repo for further details. The stable diffusion model is also used to produce munificient and copious image variation results. We have extended our diffusion-based model exploration journey among [ControlNet](https://github.com/Mikubill/sd-webui-controlnet), [T2I adapter](https://github.com/TencentARC/T2I-Adapter), [Dreambooth](https://github.com/d8ahazard/sd_dreambooth_extension), [Lora](https://github.com/bmaltais/kohya_ss) fine-tuning on SDXL and [INST](https://github.com/zyxElsa/InST).
+
+To replicate the CycleGAN result of our paper, please check [README.md](./cyclegan/README.md).
 
 To replicate the ControlNet results of our paper, please further follow the procedures described below:
 
