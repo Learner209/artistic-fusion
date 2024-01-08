@@ -25,9 +25,6 @@ In essence, **Artistic Fusion** is more than an addition to the compendium of im
 
 > 📣 Attention please: <br> > **Artistic Fusion** is developed heavily under the framework of [stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui), an ultra-awesome project clustering copious diffusion-based generative models. Its instellation of image generaitive models provided us with a plentiful playground with munificient probablities. An example of using stale-diffusion-webui for generating image variation(a indispensable component of our final model) results are shown below. With [stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui), easy peasy! 😉
 
-<details open>
-  <summary><b>👉 Click here to see the example 👀</b></summary>
-
 ## ❖ Contributions and Performance
 
 ⦿ **`Contributions`**:
@@ -228,13 +225,6 @@ More results drawn from our final model's style transfer results:
 I extend my heartfelt gratitude to the esteemed faculty and dedicated teaching assistants of AI3603 for their invaluable guidance and support throughout my journey in image processing. Their profound knowledge, coupled with an unwavering commitment to nurturing curiosity and innovation, has been instrumental in my academic and personal growth. I am deeply appreciative of their efforts in creating a stimulating and enriching learning environment, which has significantly contributed to the development of this paper and my understanding of the field. My sincere thanks to each one of them for inspiring and challenging me to reach new heights in my studies.
 
 ### ✨Stars/forks/issues/PRs are all welcome!
-
-<details open>
-<summary><b><i>👏 Click to View Contributors: </i></b></summary>
-
-![Stargazers repo roster for @Learner209/artistic-fusion](https://github.com/Learner209/artistic-fusion)
-
-</details>
 
 ## ❖ Last but Not Least
 
