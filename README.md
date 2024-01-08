@@ -66,23 +66,55 @@ Our final model: Diffusion + GAN framework, with Stable diffusion models' genera
 ## ❖ Development Environment
 
 We run on `Ubuntu 22.04 LTS` with a system configured with $8\times$ NVIDIA RTX A40 GPU.
+You have two ways to install the envrironment.
 
--   Use conda to create a env for **Artistic fusion** and activate it.
+-   Use conda to create a env for **Artistic fusion** from our exported `environment.yml` and activate it.
 
 ```bash
-conda create -n ldm python=3.10
+conda env create -f environment.yml
 conda activate ldm
 ```
 
--   Then running the `webui.sh`, the activated environment will automatically flow into installation process.
+-   Running the `./webui.sh`, then the activated environment will automatically flow into the installation process. If anything goes wrong, please make sure that you start your vs-code from the command line with the desired environment activated.
 
 ```
+
+conda create -n ldm python=3.10
+conda activate ldm
 ./webui.sh
 ```
 
-Additionally, if you want to reproduce image-variation results in the paper(based on `sd-unclip-h.ckpt`), please refer to the [latent diffusion](https://github.com/CompVis/latent-diffusion) repo !🤗
+Additionally, if you want to reproduce image-variation results in the paper(based on `sd-unclip-h.ckpt`), !🤗
 
-Also, if you want to reproduce other style transfer results in the paper, please refer to the cycleGAN directory and more specifically, the file, for other training detail queries, please contact our author [qisiyuan](qisiyuan7936@sjtu.edu.cn).
+Please follow the procedures delineated below:
+
+1. This guide will configurate your webui to perfectly reproduce our results in Stable diffusion UI, so that we can make sure that our later steps on controlnet can also perfectly reproduce our paper's results.
+
+2. Besides, these steps will influence the behaviors of your webui, and we recommend users to change these options back if users mainly use Stable Diffusion 1.5.
+
+3. Make sure that your webui version is at least 1.6.0. We will use "sd21-unclip-h.ckpt" for the test so you should have it. Go to your webui setting, "Show all pages", then Ctrl+F open search, search for "random", then make sure to use "CPU" seed (in Setting->Stable Diffusion)
+
+    ![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/guides_01.png)
+
+4. then search for "sgm", check "SGM noise multiplier" (in Setting->Sampler parameters)
+
+    ![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/guides_02.png)
+
+5. then search "deterministic", make sure to UNCHECK "Do not make DPM++ SDE deterministic across different batch sizes." (Do NOT select it, in Setting->Compatibility)
+
+    ![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/guides_03.png)
+
+6. then apply the settings:
+
+    ![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/guides_04.png)
+
+7. then set the settings below:
+
+    ![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/guides_05.png)
+
+    ![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/guides_06.png)
+
+8. Now select a image from our test datase(if you are using batch mode, please specify the home directory of the test dataset ). Then hit Ctrl+Enter and enjoy your results !!! 😃😃😃
 
 ## ❖ Datasets
 
@@ -102,6 +134,18 @@ Here are some samples from our style image dataset:
 
 We use the CycleGAN model as our backbone, and train it on our mural-paining dataset. Also please take a tour to [`CycleGAN`](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix) repo for further details. The stable diffusion model is also used to produce munificient and copious image variation results. We have extended our diffusion-based model exploration journey among [ControlNet](https://github.com/Mikubill/sd-webui-controlnet), [T2I adapter](https://github.com/TencentARC/T2I-Adapter), [Dreambooth](https://github.com/d8ahazard/sd_dreambooth_extension), [Lora](https://github.com/bmaltais/kohya_ss) fine-tuning on SDXL and [INST](https://github.com/zyxElsa/InST).
 
+To replicate the ControlNet results of our paper, please further follow the procedures described below:
+
+1. Open the ControlNet tab under the txt2img section:
+
+2. then set the settings below:
+
+    ![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/guides_07.png)
+
+    ![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/guides_08.png)
+
+3. Hit Ctrl+Enter and enjoy your results !!! 😃😃😃
+
 ## ❖ Quick Run
 
 <details open>
@@ -109,17 +153,7 @@ We use the CycleGAN model as our backbone, and train it on our mural-paining dat
 
 Please see the `experiment.ipynb` notebooks under the `cyclegan` directory for reference about the training procedure and inference pass of our best model.
 
-<!-- <p align="center">
-    <a id="SAITS" href="#SAITS">
-        <img src="./assets/demo/helper.png" alt="artistic fusion" title="artistic fusion" width="600"/>
-        <img src="./assets/demo/helper_2.png" alt="artistic fusion" title="artistic fusion" width="600"/>
-    </a>
-</p> -->
-
-![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/helper.png)
-![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/helper_2.png)
-
-Some image browsing tools to help you go over your collections quickly and efficiently.
+You can use infinite image browsing extension to help you go over your collections quickly and efficiently.
 
 <!-- <p align="center">
     <a id="SAITS" href="#SAITS">
@@ -130,6 +164,9 @@ Some image browsing tools to help you go over your collections quickly and effic
 
 ![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/infinite_image_broswing.png)
 ![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/infinite_image_broswing_2.png)
+
+If you are encountering any problems during reproducing our result, consider align the installed extensions with us !
+![artistic_fusion](https://github.com/Learner209/artistic-fusion/blob/master/assets/demo/guides_09.png)
 
 </details>
 
